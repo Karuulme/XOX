@@ -19,14 +19,14 @@ namespace XOX
         public bool Users1 = true;
         public bool Users2 = false;
         public string[] konumlar = new string[9];
-        public Button[] butonlar = new Button[9]; 
+        public Button[] butonlar = new Button[9];
 
-        public static int[,] UserX = new int[3,3];
-        public static int[,] UserO = new int[3,3];
+        public  int[,] UserX = new int[3, 3];
+        public  int[,] UserO = new int[3, 3];
 
-        public  void Buton_olusturma()
+        public void Buton_olusturma()
         {
-           MessageBox.Show( UserX[0, 0].ToString());
+          
             label3.ForeColor = Color.Green;
             label4.ForeColor = Color.Red;
             for (int i = 0; i < 9; i++)
@@ -48,21 +48,20 @@ namespace XOX
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            Buton_olusturma();
+             Buton_olusturma();
         }
-        void  KClick(object sender, EventArgs e)
+        void KClick(object sender, EventArgs e)
         {
-           
-     
-        Button btn = (Button)sender;
-           
-                for (int i=0;i<9;i++)
-                {
 
 
-                
-                if (btn.Name.ToString()==konumlar[i])
+            Button btn = (Button)sender;
+
+            for (int i = 0; i < 9; i++)
+            {
+
+
+
+                if (btn.Name.ToString() == konumlar[i])
                 {
                     btn.Enabled = false;
                     int satir = i / 3;
@@ -71,16 +70,16 @@ namespace XOX
                     if (Users1 == true)
                     {
                         btn.Text = "X";
-                  
-                      
+
+
                         Users1 = false;
                         Users2 = true;
                         label3.ForeColor = Color.Red;
                         label4.ForeColor = Color.Green;
 
                         UserX[satir, sutun] = 1;
-                        DiziKontrol(UserX,1);
-                       
+                        DiziKontrol(UserX, 1);
+
                     }
                     else
                     {
@@ -90,8 +89,8 @@ namespace XOX
                         Users1 = true;
                         Users2 = false;
                         UserO[satir, sutun] = 1;
-                        DiziKontrol(UserO,2);
-                       
+                        DiziKontrol(UserO, 2);
+
                     }
 
 
@@ -99,32 +98,32 @@ namespace XOX
 
 
             }
-           
+
         }
         public void ButtonClose()
         {
-            foreach(var i in butonlar)
+            foreach (var i in butonlar)
             {
                 i.Enabled = false;
-                
+
 
             }
 
 
         }
-        public void DiziKontrol(int[,] Konumlar,int PlayerNo)
+        public void DiziKontrol(int[,] Konumlar, int PlayerNo)
         {
 
-            for (int i=0;i<3;i++)
+            for (int i = 0; i < 3; i++)
             {
                 int toplam = 0;
                 for (int j = 0; j < 3; j++)
                 {
 
                     toplam += Konumlar[i, j];
-                    if (toplam==3)
+                    if (toplam == 3)
                     {
-                        MessageBox.Show("Oyunu Kazanan "+PlayerNo+". Oyuncu");
+                        MessageBox.Show("Oyunu Kazanan " + PlayerNo + ". Oyuncu");
                         ButtonClose();
 
                     }
@@ -155,7 +154,7 @@ namespace XOX
             for (int i = 0; i < 3; i++)
             {
                 int toplam = 0;
-                
+
                 toplam += Konumlar[i, i];
                 if (toplam == 3)
                 {
@@ -166,13 +165,17 @@ namespace XOX
 
             }
             int toplam2 = Konumlar[0, 2] + Konumlar[1, 1] + Konumlar[2, 0];
-            if (toplam2==3)
+            if (toplam2 == 3)
             {
 
 
                 MessageBox.Show("Oyunu Kazanan " + PlayerNo + ". Oyuncu");
                 ButtonClose();
             }
+
+
+
+
 
 
 
@@ -201,20 +204,15 @@ namespace XOX
 
         }
 
-         void btnRestart_Click(object sender, EventArgs e)
+      private  void btnRestart_Click(object sender, EventArgs e)
         {
-        Users1 = true;
-        Users2 = false;
-            
-           
-          DizileriSil(UserO);
-          DizileriSil(UserX);
+            Users1 = true;
+            Users2 = false;
 
 
-
-            int[,] UserX = new int[3, 3];
-        int[,] UserO = new int[3, 3];
-        flowLayoutPanel1.Controls.Clear();
+            DizileriSil(UserO);
+            DizileriSil(UserX);
+            flowLayoutPanel1.Controls.Clear();
             Buton_olusturma();
 
         }
