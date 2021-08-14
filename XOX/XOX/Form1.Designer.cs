@@ -32,6 +32,7 @@ namespace XOX
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -62,11 +63,22 @@ namespace XOX
             this.flowLayoutPanel1.Size = new System.Drawing.Size(307, 309);
             this.flowLayoutPanel1.TabIndex = 13;
             // 
+            // btnRestart
+            // 
+            this.btnRestart.Location = new System.Drawing.Point(193, 12);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(75, 23);
+            this.btnRestart.TabIndex = 14;
+            this.btnRestart.Text = "Restart";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 438);
+            this.ClientSize = new System.Drawing.Size(470, 456);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -82,6 +94,7 @@ namespace XOX
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 

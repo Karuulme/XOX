@@ -18,17 +18,18 @@ namespace XOX
         }
         public bool Users1 = true;
         public bool Users2 = false;
-        string[] konumlar = new string[9];
-        Button[] butonlar = new Button[9]; 
+        public string[] konumlar = new string[9];
+        public Button[] butonlar = new Button[9]; 
 
-        int[,] UserX = new int[3,3];
-        int[,] UserO = new int[3,3];
+        public static int[,] UserX = new int[3,3];
+        public static int[,] UserO = new int[3,3];
 
-        private void Form1_Load(object sender, EventArgs e)
+        public  void Buton_olusturma()
         {
+           MessageBox.Show( UserX[0, 0].ToString());
             label3.ForeColor = Color.Green;
             label4.ForeColor = Color.Red;
-            for (int i =0;i<9;i++)
+            for (int i = 0; i < 9; i++)
             {
 
                 butonlar[i] = new Button();
@@ -36,13 +37,19 @@ namespace XOX
                 butonlar[i].Height = 90;
                 butonlar[i].Font = new Font(butonlar[i].Font.FontFamily, 30);
                 butonlar[i].Text = " ";
-                butonlar[i].Name = "K"+i.ToString();
-                konumlar[i]= "K" + i.ToString();
+                butonlar[i].Name = "K" + i.ToString();
+                konumlar[i] = "K" + i.ToString();
                 flowLayoutPanel1.Controls.Add(butonlar[i]);
                 butonlar[i].Click += new EventHandler(KClick);
                 butonlar[i] = butonlar[i];
             }
 
+
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            Buton_olusturma();
         }
         void  KClick(object sender, EventArgs e)
         {
@@ -176,6 +183,39 @@ namespace XOX
 
         private void label3_Click(object sender, EventArgs e)
         {
+
+        }
+        public void DizileriSil(int[,] Diziler)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Diziler[i, j] = 0;
+
+                }
+
+
+            }
+
+
+        }
+
+         void btnRestart_Click(object sender, EventArgs e)
+        {
+        Users1 = true;
+        Users2 = false;
+            
+           
+          DizileriSil(UserO);
+          DizileriSil(UserX);
+
+
+
+            int[,] UserX = new int[3, 3];
+        int[,] UserO = new int[3, 3];
+        flowLayoutPanel1.Controls.Clear();
+            Buton_olusturma();
 
         }
     }
